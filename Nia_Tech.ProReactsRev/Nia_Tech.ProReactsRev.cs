@@ -1,7 +1,7 @@
 ﻿#region バージョン情報
 /**
 *	@file
-*	@brief モデルの進行状況情報自動通知システム「プロリアクトス・レヴ」
+*	@brief MVVMパターンでの、モデルの進行状況情報自動通知システム「プロリアクトス・レヴ」
 *
 *		Progress information Reactive notification System with Reportable Value : Pro-Reacts Rev	
 *
@@ -15,7 +15,7 @@
 *	@par 作成者 Author
 *	智中ニア（Nia Tomonaka）
 *	@par コピーライト Copyright
-*	Copyright (C) 2016 Nia-Tech
+*	Copyright (C) 2016 Nia Tomonaka
 *	@par 作成日
 *	2016/03/06
 *	@par 最終更新日
@@ -25,6 +25,7 @@
 *	@par 連絡先 Contact
 *	@@nia_tn1012（ https://twitter.com/nia_tn1012/ ）
 *	@par ホームページ Homepage
+*	- GitHub : https://github.com/Nia-TN1012/ProReactsRev/
 *	@par リリースノート Release note
 *	- 2016/03/06 Ver. 1.0.0
 *		- NTC-00000 : 初版リリース
