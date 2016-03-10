@@ -3,7 +3,7 @@
 *	@file
 *	@brief MVVMパターンでの、モデルの進行状況情報自動通知システム「プロリアクトス・レヴ」
 *
-*		Progress information Reactive notification System with Reportable Value : Pro-Reacts Rev	
+*		PROgress information REACTive notification System - REporting Value  : Pro-Reacts Rev	
 *
 *		外部からモデルの進行状況や結果の情報がレポートされた時、
 *		その情報を格納するプロパティの更新とその通知を自動的に行う機能です。
@@ -179,6 +179,5 @@ namespace Nia_Tech.ModelExtentions {
 					ProReactsCore.ProgressInfo = e
 			);
 		}
-
 	}
 }
