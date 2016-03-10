@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
 [assembly: AssemblyTitle("Nia_Tech.ProReactsRev")]
-[assembly: AssemblyDescription( "モデルの進行状況情報自動通知システム「プロリアクトス・レヴ」" )]
+[assembly: AssemblyDescription( "MVVMパターン用、進行状況の情報の自動通知システム「プロリアクトス・レヴ」" )]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany( "Nia-Tech" )]
 [assembly: AssemblyProduct("Nia_Tech.ProReactsRev")]
@@ -26,5 +26,5 @@ using System.Runtime.InteropServices;
 // すべての値を指定するか、下のように '*' を使ってビルドおよびリビジョン番号を 
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion( "1.0.0.1" )]
+[assembly: AssemblyFileVersion( "1.0.0.1" )]
