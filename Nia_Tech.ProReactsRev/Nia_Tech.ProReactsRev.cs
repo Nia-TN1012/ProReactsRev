@@ -25,7 +25,9 @@
 *	@par 連絡先 Contact
 *	@@nia_tn1012（ https://twitter.com/nia_tn1012/ ）
 *	@par ホームページ Homepage
-*	- GitHub : https://github.com/Nia-TN1012/ProReactsRev/
+*	- http://chronoir.net/ （ホームページ）
+*	- https://github.com/Nia-TN1012/ProReactsRev/ （GitHubのリポジトリ）
+*	- https://www.nuget.org/packages/Nia_Tech.ProReactsRev/ （NuGet Gallery）
 *	@par リリースノート Release note
 *	- 2016/03/09 Ver. 1.0.0
 *		- NTC-00000 : 初版リリース

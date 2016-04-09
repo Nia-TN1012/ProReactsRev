@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://raw.githubusercontent.com/Nia-TN1012/ProReactsRev/master/LICENCE.txt</licenseUrl>
+    <projectUrl>https://github.com/Nia-TN1012/ProReactsRev/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>$version$ : 初版リリース</releaseNotes>
+    <copyright>Copyright 2016 $author$</copyright>
+    <tags>.NET C# MVVM Progress</tags>
+  </metadata>
+</package>
