@@ -17,8 +17,8 @@ PROgress information REACTive notification System - REporting Value
 　http://chronoir.net （ホームページ）  
 　https://github.com/Nia-TN1012/ProReactsRev （GitHubのリポジトリ）  
   
-NuGet Gallery（.NuGetパッケージは近日公開予定です）  
-　[https://www.nuget.org/packages/Nia_Tech.ProReactsRev/]()
+NuGet Gallery  
+　https://www.nuget.org/packages/Nia_Tech.ProReactsRev/
 
 
 ---
