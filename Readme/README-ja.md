@@ -1,6 +1,6 @@
 # ProReactsRev
 MVVMパターン用、進行状況の情報の自動通知システム「プロリアクトス・レヴ」  
-PROgress information REACTive notification System - REporting Value  
+>ProReactsRev : PROgress information REACTive notification System - REporting Value  
 
 ## ライブラリ概要
 
@@ -8,14 +8,13 @@ PROgress information REACTive notification System - REporting Value
 |---|---|
 |(読み名)|クロノワールドットネット プロリアクトス・レヴ|
 |ライブラリタイプ|.NET Frameworkクラスライブラリ|
-|開発者|智中 ニア（ Nia Tomonaka ）|
+|作者|智中 ニア（ Nia Tomonaka ）|
 |バージョン|1.0.1.0|
 |作成日|2017/03/12|
 |更新日|2017/03/12|
 |開発言語|C# 6.0|
 |ターゲットフレームワーク|.NET Framework 4.5|
-|再配布|可|
-|転載|可|
+|ライセンス|MIT Licence|
 |ホームページ|https://chronoir.net/|
 |GitHub|https://github.com/Nia-TN1012/ProReactsRev/|
 |NuGet Gallery|https://www.nuget.org/packages/Chronoir_net.ProReactsRev/|
@@ -28,14 +27,14 @@ PROgress information REACTive notification System - REporting Value
 ## アーキテクチャー
 
 このライブラリには、以下の3つのクラスで構成されています。
-* **NotifyPropertyChangedHelper**クラス : MVVMパターンで利用する、プロパティ変更の通知するための機能を持つヘルパークラスです。
-* **ProReactsCore\<T\>**クラス : 進行状況や結果の情報をProgressInfoプロパティとして格納し、値が変更された時にProgressInfoプロパティの変更通知を行うクラスです。
-* **ProReactsRev\<T\>**クラス : ProReactsCore\<T\>クラスとProgress\<T\>のインスタンスを持ち、IProgress\<T\>経由で値がレポートされた時に、
-そのProReactsCore\<T\>クラスのProgressInfoにレポートされた値を自動的に設定する機能を実装したクラスです。
+* **`NotifyPropertyChangedHelper`**クラス : MVVMパターンで利用する、プロパティ変更の通知するための機能を持つヘルパークラスです。
+* **`ProReactsCore\<T\>`**クラス : 進行状況や結果の情報を`ProgressInfo`プロパティとして格納し、値が変更された時に`ProgressInfo`プロパティの変更通知を行うクラスです。
+* **`ProReactsRev\<T\>`**クラス : `ProReactsCore\<T\>`クラスと`Progress\<T\>`のインスタンスを持ち、`IProgress\<T\>`経由で値がレポートされた時に、
+その`ProReactsCore\<T\>`クラスの`ProgressInfo`にレポートされた値を自動的に設定する機能を実装したクラスです。
 
 ## 使い方
 
-MVVMパターンのModelクラスでProReactsRev\<T\>クラスを使用します。
+MVVMパターンのModelクラスで`ProReactsRev\<T\>`クラスを使用します。
 
 ```csharp
 using Chronoir_net.MVVMExtentions;
@@ -103,8 +102,8 @@ class ViewModel : NotifyPropertyChangedHelper {
 }
 ```
 
-また、ModelクラスにProReactsRev\<T\>クラスを継承して利用することもできます。
-その場合、ProReactsCoreプロパティとReporterプロパティはModelクラスの外部に公開されます。
+また、Modelクラスに`ProReactsRev\<T\>`クラスを継承して利用することもできます。
+その場合、`ProReactsCore`プロパティと`Reporter`プロパティはModelクラスの外部に公開されます。
 
 ```csharp
 using Chronoir_net.ModelExtentions;
@@ -130,6 +129,12 @@ class ViewModel : NotifyPropertyChangedHelper {
 	// ...
 }
 ```
+
+## このライブラリについて
+
+Chronoir_net.ProReactsRevの著作権はChronoir.netが所持しています。
+
+>(C)2014-2017 Chronoir.net
 
 
 ## 免責条項

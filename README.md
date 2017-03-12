@@ -1,6 +1,6 @@
 # ProReactsRev
 Provides the function to update property and automatically notify it changed, when the progress status or result information reported from the outside.
-PROgress information REACTive notification System - REporting Value  
+>ProReactsRev : PROgress information REACTive notification System - REporting Value  
 
 ## Library summary
 
@@ -102,8 +102,8 @@ class ViewModel : NotifyPropertyChangedHelper {
 }
 ```
 
-You can also use the 'ProReactsRev\<T\>' class inherited from the Model class.
-In that case, the 'ProReactsCore' property and the 'Reporter' property are exposed outside the Model class.
+You can also use the `ProReactsRev\<T\>` class inherited from the Model class.
+In that case, the `ProReactsCore` property and the `Reporter` property are exposed outside the Model class.
 
 ```csharp
 using Chronoir_net.ModelExtentions;
@@ -129,6 +129,12 @@ class ViewModel : NotifyPropertyChangedHelper {
 	// ...
 }
 ```
+
+## About
+
+The copyright of Chronoir_net.ProReactsRev is possessed by Chronoir.net.
+
+>(C)2014-2017 Chronoir.net
 
 
 ## Legal Disclaimer
