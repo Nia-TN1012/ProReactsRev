@@ -1,48 +1,45 @@
 # ProReactsRev
----
-MVVMパターン用、進行状況の情報の自動通知システム「プロリアクトス・レヴ」  
+Provides the function to update property and automatically notify it changed, when the progress status or result information reported from the outside.
 PROgress information REACTive notification System - REporting Value  
-  
-バージョン : Ver. 1.0.0.1 ( Mar. 09, 2016 )  
-  
-種別 : .NET クラスライブラリ  
-  
-ターゲットプラットフォーム :  
-.NET Framework 4.5 
-  
-作成者 : 智中 ニア（ [@nia_tn1012](https://twitter.com/nia_tn1012/) ）  
-ライセンス : MIT Licence  
-  
-リンク  
-　http://chronoir.net （ホームページ）  
-　https://github.com/Nia-TN1012/ProReactsRev （GitHubのリポジトリ）  
-  
-NuGet Gallery  
-　https://www.nuget.org/packages/Nia_Tech.ProReactsRev/
 
+## Library summary
 
----
+|Name|Chronoir_net.ProReactsRev|
+|---|---|
+|Type|.NET Framework class library|
+|Author|Nia Tomonaka|
+|Version|1.0.1.0|
+|Released date|2017/03/12|
+|Last modified date|2017/03/12|
+|Programing Lang.|C# 6.0|
+|Target framework|.NET Framework 4.5|
+|Licence|MIT Licence|
+|Homepage|https://chronoir.net/|
+|GitHub|https://github.com/Nia-TN1012/ProReactsRev/|
+|NuGet Gallery|https://www.nuget.org/packages/Chronoir_net.ProReactsRev/|
+|Twitter|[@nia_tn1012](https://twitter.com/nia_tn1012)|
 
-##◆ はじめに
+## Introduction
 
-プロリアクトス・レヴは、外部から進行状況や結果の情報がレポートされた時、その情報を格納するプロパティの更新とその通知を自動的に行う機能を提供します。
+Pro-Reacts-Rev rovides the function to update property and automatically notify it changed, when the progress status or result information reported from the outside.
 
-##◆ アーキテクチャー
+## Architecture
 
-このライブラリには、以下の3つのクラスで構成されています。
-* **NotifyPropertyChangedHelper**クラス : MVVMパターンで利用する、プロパティ変更の通知するための機能を持つヘルパークラスです。
-* **ProReactsCore\<T\>**クラス : 進行状況や結果の情報をProgressInfoプロパティとして格納し、値が変更された時にProgressInfoプロパティの変更通知を行うクラスです。
-* **ProReactsRev\<T\>**クラス : ProReactsCore\<T\>クラスとProgress\<T\>のインスタンスを持ち、IProgress\<T\>経由で値がレポートされた時に、
-そのProReactsCore\<T\>クラスのProgressInfoにレポートされた値を自動的に設定する機能を実装したクラスです。
+This library consists of the following three classes.
+* **`NotifyPropertyChangedHelper`** class : The helper class that has a function to notify property changed to be used in MVVM pattern.
+* **`ProReactsCore\<T\>`** class : Stores progress status and result information as ProgressInfo property and notifies change of ProgressInfo property when value is changed.
+* **`ProReactsRev\<T\>`** class : This class has `ProReactsCore\<T\>` and `Progress\<T\>` instances, 
+that implements the function to automatically set the value reported in the ProgressInfo of `ProReactsCore\<T\>` class
+when the value is reported via `IProgress\<T\>`.
 
-##◆ 使い方
+## How to use
 
-MVVMパターンのModelクラスでProReactsRev\<T\>クラスを使用します。
+Use the `ProReactsRev\<T\>` class in the Model class of the MVVM pattern.
 
 ```csharp
-using Nia_Tech.ModelExtentions;
+using Chronoir_net.MVVMExtentions;
 
-// MVVMのModelクラス
+// Model
 class Model {
 
 	private ProReactsRev<string> status;
@@ -54,48 +51,48 @@ class Model {
 		status2.ProReactsCore;
 	
 	public Model() {
-		status = new ProReactsRev<string>( "ステータス1" );
-		// ProReactsCoreクラスのIDプロパティに設定する識別名は省略可能です。
+		status = new ProReactsRev<string>( "Status1" );
+		// The identifier to set for the ID property of the ProReactsCore<T> class, can be omitted.
 		status2 = new ProReactsRev<string>();
 	}
 	
 	public DoSomething() {
-		// 進行状況や結果のレポートは、ProReactsRevクラスのReporterプロパティからReportメソッドを呼び出して行います。
-		status.Reporter.Report( "処理開始" );
+		// To report progress and results, call the 'Reporter.Report' method of 'ProReactsRev<T>' class.
+		status.Reporter.Report( "Process start" );
 		// ...
-		status.Reporter.Report( "処理完了" );
+		status.Reporter.Report( "Process completed" );
 	}
 	
 	public DoSomething2() {
-		status2.Reporter.Report( "処理開始" );
+		status2.Reporter.Report( "Process start" );
 		// ...
-		status2.Reporter.Report( "処理完了" );
+		status2.Reporter.Report( "Process completed" );
 	}
 }
 
-// MVVMのViewModelクラス
+// ViewModel
 class ViewModel : NotifyPropertyChangedHelper {
 	// Model
 	private model;
 	
-	// ModelのStatusプロパティを直接取得します。
+	// Gets a value from the Model's 'Status' property.
 	public ProReactsCore<string> Status =>
 		model.Status;
 		
-	// ModelのStatus2プロパティからProgressInfoプロパティを取得します。
+	// Gets a value from the Model's 'Status2.ProgressInfo' property.
 	public string StatusMessage =>
 		model.Status2.ProgressInfo;
 		
 	public ViewModel() {
 		model = new Model();
 		
-		// StatusのようにProReactsCoreプロパティを取得するViewModelのプロパティを直接データバインディングする場合、
-		// ProgressInfoChangedイベントハンドラーを経由してのプロパティを通知は不要です。
-		// ProReactsCoreクラス内のプロパティ変更通知により、自動的に反映されます。
+		// If directly bind an instance of 'ProReactsCore<T>' like the 'Status' property,
+		// do not need to notify the property via the 'ProgressInfoChanged' event handler.
+		// Automatically reflected by property changed notification in 'ProReactsCore<T>' class.
 		
-		// StatusMessageのように、ProReactsCoreのProgressInfoを取得するViewModelのプロパティをデータバインディングする場合、
-		// ProgressInfoChangedイベントハンドラーを経由してのプロパティを通知します。
-		// その場合、ProReactsRevクラスのインスタンスは必ずUIと同じスレッド上で作成してください。
+		// When data binding the 'ProgressInfo' property of 'ProReactsCore<T>' like the 'StatusMessage' property,
+		// notifies the property changed via the 'ProgressInfoChanged' event handler.
+		// In that case, make sure to create an instance of the 'ProReactsRev<T>' class on the same thread as the UI.
 		model.Status2.ProgressInfoChanged =>
 			( sender, e ) =>
 				NotifyPropertyChanged( nameof( StatusMessage ) );
@@ -105,25 +102,25 @@ class ViewModel : NotifyPropertyChangedHelper {
 }
 ```
 
-また、ModelクラスにProReactsRev\<T\>クラスを継承して利用することもできます。
-その場合、ProReactsCoreプロパティとReporterプロパティはModelクラスの外部に公開されます。
+You can also use the 'ProReactsRev\<T\>' class inherited from the Model class.
+In that case, the 'ProReactsCore' property and the 'Reporter' property are exposed outside the Model class.
 
 ```csharp
-using Nia_Tech.ModelExtentions;
+using Chronoir_net.ModelExtentions;
 
-// MVVMのModelクラス
+// Model
 class Model : ProReactsRev<string> {
 
 	public Model : base() {	}
 	
 	public DoSomething() {
-		Reporter.Report( "処理開始" );
+		Reporter.Report( "Process start );
 		// ...
-		Reporter.Report( "処理完了" );
+		Reporter.Report( "Process completed" );
 	}
 }
 
-// MVVMのViewModelクラス
+// ViewModel
 class ViewModel : NotifyPropertyChangedHelper {
 	private model;
 	public ProReactsCore<string> Status =>
@@ -134,13 +131,13 @@ class ViewModel : NotifyPropertyChangedHelper {
 ```
 
 
-##◆ 免責条項
+## Legal Disclaimer
 
-このライブラリを使用しことにより生じたいかなるトラブル・損害において、
-作成者及びNia-Tech、Chronoir.netは一切の責任を負いかねます。あらかじめご了承ください。
+The author and Chronoir.net accept no any responsibility for any obstacles or damages caused by using this library.
+Please be understanding of this beforehand.
 
 
-##◆ リリースノート
+## Release note
 
-* Ver. 1.0.0.1 : 2016/03/09  
-　 - 初版リリース
+* Ver. 1.0.1.0 : 2017/03/12 
+　 - First release（Re-released from Nia_Tech.ProReactsRev. XML comments are supported in Japanese and English）

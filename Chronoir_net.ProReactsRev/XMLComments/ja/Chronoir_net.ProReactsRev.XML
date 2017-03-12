@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Chronoir_net.ProReactsRev</name>
+    </assembly>
+    <members>
+        <member name="T:Chronoir_net.ModelExtentions.NotifyPropertyChangedHelper">
+            <summary>
+            	プロパティの変更通知するヘルパークラスを定義します。
+            </summary>
+        </member>
+        <member name="E:Chronoir_net.ModelExtentions.NotifyPropertyChangedHelper.PropertyChanged">
+            <summary>
+            	プロパティを変更した時に発生します。
+            </summary>
+        </member>
+        <member name="P:Chronoir_net.ModelExtentions.NotifyPropertyChangedHelper.PropertyChangedFromThis">
+            <summary>
+            	<see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/>のイベントハンドラーを取得します。
+            </summary>
+        </member>
+        <member name="M:Chronoir_net.ModelExtentions.NotifyPropertyChangedHelper.NotifyPropertyChanged(System.String)">
+            <summary>
+            	指定したプロパティの変更を通知します。
+            </summary>
+            <param name="propertyName">変更を通知するプロパティ名（ 省略時、呼び出し元のプロパティ名となります。）</param>
+        </member>
+        <member name="M:Chronoir_net.ModelExtentions.NotifyPropertyChangedHelper.SetProperty``1(``0@,``0,System.String)">
+            <summary>
+            	指定したプロパティに値を設定し、そのプロパティの変更を通知します。
+            </summary>
+            <typeparam name="T">プロパティの型</typeparam>
+            <param name="property">設定先のプロパティ</param>
+            <param name="value">プロパティに設定する値</param>
+            <param name="propertyName">プロパティの名前（ 省略時、呼び出し元のプロパティ名となります。）</param>
+        </member>
+        <member name="T:Chronoir_net.ModelExtentions.ProReactsCore`1">
+            <summary>
+            	Modelの進行状況の情報を格納する、プロリアクトス・コアを定義します。
+            </summary>
+            <typeparam name="T">進行状況の情報を格納するオブジェクトの型</typeparam>
+        </member>
+        <member name="P:Chronoir_net.ModelExtentions.ProReactsCore`1.ID">
+            <summary>
+            	現在のインスタンスを生成する時に付けた識別子を取得します。
+            </summary>
+        </member>
+        <member name="F:Chronoir_net.ModelExtentions.ProReactsCore`1.progressInfo">
+            <summary>
+            	進行状況の情報を格納したオブジェクトを表します。
+            </summary>
+        </member>
+        <member name="P:Chronoir_net.ModelExtentions.ProReactsCore`1.ProgressInfo">
+            <summary>
+            	進行状況の情報を格納したオブジェクトを取得・設定します。
+            </summary>
+            <remarks>
+            	このプロパティを通してUIにデータバインディングすることで、
+            	プロリアクトス・レヴのReporter.Report から進行状況の情報をレポートした時に、
+            	このプロパティのセット側が呼び出されて値を格納するとともに、変更の通知を行います。
+            </remarks>
+        </member>
+        <member name="E:Chronoir_net.ModelExtentions.ProReactsCore`1.ProgressInfoChanged">
+            <summary>
+            	進行状況の情報が変更された時に発生します。
+            </summary>
+            <example>
+            	プロリアクトス・コアのイベント発生時、ViewModelで定義したプロリアクトス・コアの
+            	ProgressInfoプロパティの値を返すプロパティの変更を通知します。
+            	◆ ViewModel
+            		pulic T ProgressInfo =>
+            			ModelのProReactosCore.ProgressInfo;
+            			
+            		public ViewModel(){
+            			// Modelを初期化
+            			
+            			// ViewModelのProgressInfoプロパティの変更を通知し、バインド先のUIの値に反映させます。
+            			ModelのProReactosCore.ProgressInfoChanged +=
+            				PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( nameof( ProgressInfo ) ) );
+            		}
+            </example>
+        </member>
+        <!-- 正しくない形式の XML コメントがメンバー "M:Chronoir_net.ModelExtentions.ProReactsCore`1.#ctor(System.String)" で無視されました -->
+        <member name="T:Chronoir_net.ModelExtentions.ProReactsRev`1">
+            <summary>
+            	プロリアクトス・コアにモデルの進行状況の情報をレポートする、プロリアクトス・レヴ を定義します。
+            </summary>
+            <typeparam name="T">進行状況の情報を格納するオブジェクトの型</typeparam>
+        </member>
+        <member name="P:Chronoir_net.ModelExtentions.ProReactsRev`1.ProReactsCore">
+            <summary>
+            	現在のインスタンスのプロリアクトス・コアを取得します。
+            </summary>
+            <remarks>このプロパティ通してUIにバインディングしている場合、プロパティの変更通知は不要です。</remarks>
+        </member>
+        <member name="F:Chronoir_net.ModelExtentions.ProReactsRev`1.progress">
+            <summary>
+            	IProgressからレポートを受け取った時にコールバックする、<see cref="T:System.Progress`1"/>オブジェクト表します。
+            </summary>
+        </member>
+        <member name="P:Chronoir_net.ModelExtentions.ProReactsRev`1.Reporter">
+            <summary>
+            	プロリアクトス・レヴにレポートするための<see cref="T:System.IProgress`1"/>オブジェクトを取得します。
+            </summary>
+        </member>
+        <member name="M:Chronoir_net.ModelExtentions.ProReactsRev`1.#ctor(System.String)">
+            <summary>
+            	識別子から、<see cref="T:Chronoir_net.ModelExtentions.ProReactsRev`1"/>クラスの新しいインスタンスを生成します。
+            </summary>
+            <param name="id">識別子</param>
+        </member>
+    </members>
+</doc>

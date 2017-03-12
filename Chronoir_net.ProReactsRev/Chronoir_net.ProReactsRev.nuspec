@@ -4,14 +4,17 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <authors>Nia Tomonaka</authors>
+    <owners>Nia Tomonaka</owners>
     <licenseUrl>https://raw.githubusercontent.com/Nia-TN1012/ProReactsRev/master/LICENCE.txt</licenseUrl>
     <projectUrl>https://github.com/Nia-TN1012/ProReactsRev/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>$version$ : 初版リリース</releaseNotes>
-    <copyright>Copyright 2016 $author$</copyright>
+    <releaseNotes>$version$ : First release</releaseNotes>
+    <copyright>Copyright (C) 2014-2017 Chronoir.net</copyright>
     <tags>.NET C# MVVM Progress</tags>
   </metadata>
+  <files>
+	<file src="XMLComments/ja/$id$.XML" target="lib/net45/ja/"/>
+  </files>
 </package>
